@@ -1,18 +1,19 @@
 import cv2 as cv
+import time
 
 
-def gen_frames_detection():  
+def gen_frames_detection():
     camera = cv.VideoCapture(0)
     face_cascade = cv.CascadeClassifier('app/static/haarcascade_frontalface_default.xml')
     eye_cascade = cv.CascadeClassifier('app/static/haarcascade_eye.xml')
     while True:
         success, frame = camera.read()  # read the camera frame
-        gray = cv.cvtColor(frame, cv.COLOR_RGB2GRAY)
-        faces = face_cascade.detectMultiScale(gray, 1.1, 8)
         if not success:
             break
         else:
             try:
+                gray = cv.cvtColor(frame, cv.COLOR_RGB2GRAY)
+                faces = face_cascade.detectMultiScale(gray, 1.1, 8)
                 for (x, y, w, h) in faces:
                     # dessiner le rectangle sur l'image principale
                     cv.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 1)
@@ -33,12 +34,13 @@ def gen_frames_inversion():
     face_cascade = cv.CascadeClassifier('app/static/haarcascade_frontalface_default.xml')
     while True:
         success, frame = camera.read()
-        gray = cv.cvtColor(frame, cv.COLOR_RGB2GRAY)
-        faces = face_cascade.detectMultiScale(gray, 1.1, 8)
+        
         if not success:
             break
         else:
             try:
+                gray = cv.cvtColor(frame, cv.COLOR_RGB2GRAY)
+                faces = face_cascade.detectMultiScale(gray, 1.1, 8)
                 x1,y1,w1,h1 = faces[0]
                 x2,y2,w2,h2 = faces[1]
 

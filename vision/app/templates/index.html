@@ -52,36 +52,57 @@
 
             <!-- Page Content Holder -->
             <div id="content">
-
-                <nav class="navbar navbar-default">
-                    <div class="container-fluid">
-                        <div class="navbar-header">
-                            <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
-                                <i class="glyphicon glyphicon-align-left"></i>
-                                <span>Menu</span>
-                            </button>
+                <div class="container">
+                    <div class="row justify-content-md-center">
+                        <div class="col col-lg-12">
+                            <nav class="navbar navbar-default">
+                                <div class="container-fluid">
+                                    <div class="navbar-header">
+                                        <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+                                            <i class="glyphicon glyphicon-align-left"></i>
+                                            <span>Menu</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </nav>
+            
+                            <h2>Détection de visage avec Python, OpenCv, et l'algorithme Haar Cascade</h2>
+                            <p>Haar Cascade est un classificateur compris dans la librairie OpenCV. Il classifie une image avec un résultta soit positif, si cette dernière contient ce que l'on cherche, soit négatif sinon.</p>
+                            <p>Dans notre cas, l'algorithme a été entrainé avec des milliers d'images comprenant des visages, et des milliers n'en contenant pas.</p>
+                            
+                            <h3>Que sont les caractéristiques Haar et comme sont-elles extraites ?</h3>
+                            <p>Pour les visages, le classificateur cherche des éléments communs à tous les visages comme les yeux, le nez, la bouche, les sourcils.</p>
+                            
+                            <div class="text-center">
+                                <img class="mb-2 mt-2" src="/static/img/example_haar_features.jpeg" width="50%">
+                            </div>
+                            
+                            <p>Les caractéristiques sont des assemblages de pixels noir et blancs qui créent des motfis : bord, ligne, etc. L'agorithme compare des zones de l'images avec ces cas idéaux. La comparaison est mathématique : les pixels ont chacun une valeur qui correspond à leur luminsoté (0 pour le blanc et 1 pour le noir).</p>
+                            
+                            <h3>Terminologie</h3>
+                            <h4>1. Pyramide d'image et facteur d'échelle</h4>
+            
+            
+                            <div class="line"></div>
+            
+                            <h3 class="mt-5">Live Streaming</h3>
+                            <div class="text-center">
+                                <img class="img-rounded" src="{{ url_for('video_feed') }}" width="50%">
+                            </div>
+                            
+            
+                            <div class="line"></div>
+            
+                            <h2>Lorem Ipsum Dolor</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            
+                            <div class="line"></div>
+            
+                            <h3>Lorem Ipsum Dolor</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                         </div>
                     </div>
-                </nav>
-
-                <h2>Détection de visage avec Python et OpenCv</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-                <div class="line"></div>
-
-                <h3 class="mt-5">Live Streaming</h3>
-                <img src="{{ url_for('video_feed') }}" width="50%">
-
-                <div class="line"></div>
-
-                <h2>Lorem Ipsum Dolor</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-                <div class="line"></div>
-
-                <h3>Lorem Ipsum Dolor</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </div>
             </div>
         </div>
 
