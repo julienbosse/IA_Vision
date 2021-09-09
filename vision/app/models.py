@@ -81,13 +81,15 @@ def gen_video_inversion_swapping():
     cap.set(cv.CAP_PROP_FRAME_WIDTH, 1200)
     cap.set(cv.CAP_PROP_FRAME_HEIGHT, 900)
 
+    seamlessclone = cap
+
     detector = dlib.get_frontal_face_detector()
     predictor = dlib.shape_predictor("app/static/shape_predictor_68_face_landmarks.dat")
 
-    # img = cv.imread("app/static/img/bradley-cooper.jpg")
+    img = cv.imread("app/static/img/bradley-cooper.jpg")
     # img = cv2.imread("img/keanureeves.jpg")
     # img = cv2.imread("img/naruto.jpg")
-    img = cv.imread("app/static/img/Sylvester_Stallone.jpg")
+    # img = cv.imread("app/static/img/Sylvester_Stallone.jpg")
     # img = cv.imread("app/static/img/jackson.png")
     img_gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
     mask1 = np.zeros_like(img_gray)
