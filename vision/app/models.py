@@ -6,6 +6,8 @@ import time
 
 def gen_frames_detection():
     camera = cv.VideoCapture(0)
+    camera.set(cv.CAP_PROP_FRAME_WIDTH, 1200)
+    camera.set(cv.CAP_PROP_FRAME_HEIGHT, 900)
     face_cascade = cv.CascadeClassifier('app/static/haarcascade_frontalface_default.xml')
     eye_cascade = cv.CascadeClassifier('app/static/haarcascade_eye.xml')
     while True:
@@ -33,6 +35,8 @@ def gen_frames_detection():
 
 def gen_frames_inversion():
     camera = cv.VideoCapture(0)
+    camera.set(cv.CAP_PROP_FRAME_WIDTH, 1200)
+    camera.set(cv.CAP_PROP_FRAME_HEIGHT, 900)
     face_cascade = cv.CascadeClassifier('app/static/haarcascade_frontalface_default.xml')
     while True:
         success, frame = camera.read()
@@ -73,15 +77,10 @@ def gen_video_inversion_swapping():
             break
         return index
 
-    # img = cv2.imread("img/bradley-cooper.jpg")
-    # img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    # mask1 = np.zeros_like(img_gray)
-
     cap = cv.VideoCapture(0)
     cap.set(cv.CAP_PROP_FRAME_WIDTH, 1200)
     cap.set(cv.CAP_PROP_FRAME_HEIGHT, 900)
 
-    seamlessclone = cap
 
     detector = dlib.get_frontal_face_detector()
     predictor = dlib.shape_predictor("app/static/shape_predictor_68_face_landmarks.dat")
@@ -145,6 +144,7 @@ def gen_video_inversion_swapping():
 
     while True:
         success, img2 = cap.read()
+        seamlessclone = img2
         img2_gray = cv.cvtColor(img2, cv.COLOR_BGR2GRAY)
         mask2 = np.zeros_like(img2_gray)
 
@@ -297,7 +297,7 @@ def gen_video_inversion_swapping():
 
         except:
             pass
-        
+
         ret, buffer = cv.imencode('.jpg', seamlessclone)
         frame = buffer.tobytes()
         yield (b'--frame\r\n'
