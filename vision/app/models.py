@@ -297,6 +297,7 @@ def gen_video_inversion_swapping():
 
         except:
             pass
+        
         ret, buffer = cv.imencode('.jpg', seamlessclone)
         frame = buffer.tobytes()
         yield (b'--frame\r\n'
