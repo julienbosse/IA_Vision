@@ -61,7 +61,7 @@
                             </nav> -->
             
                             <h2>Détection de visage avec Python, OpenCv, et l'algorithme Haar Cascade</h2>
-                            <p>La détection de visage est un cas particulier de la détection d'objets. L'algorithme utilisé ici est Haar Cascade, qui est un classificateur compris dans la librairie OpenCV. Il classifie une image avec un résultta soit positif, si cette dernière contient ce que l'on cherche, soit négatif sinon.</p>
+                            <p>La détection de visage est un cas particulier de la détection d'objets. L'algorithme utilisé ici est Haar Cascade, qui est un classificateur compris dans la librairie OpenCV. Il classifie une image avec un résultat soit positif, si cette dernière contient ce que l'on cherche, soit négatif sinon.</p>
                             <p>Dans notre cas, l'algorithme a été entrainé avec des milliers d'images comprenant des visages, et des milliers n'en contenant pas.</p>
                             
                             <h3>Que sont les caractéristiques Haar et comme sont-elles extraites ?</h3>
@@ -74,7 +74,16 @@
                             <p>Les caractéristiques sont des assemblages de pixels noir et blancs qui créent des motfis : bord, ligne, etc. L'agorithme compare des zones de l'images avec ces cas idéaux. La comparaison est mathématique : les pixels ont chacun une valeur qui correspond à leur luminsoté (0 pour le blanc et 1 pour le noir).</p>
                             
                             <h3>Terminologie</h3>
-                            <h4>1. Pyramide d'image et facteur d'échelle</h4>
+                            
+                            <h4>1. Fenêtre glissante</h4>
+
+                            <div class="text-center margintb">
+                                <img class="mb-2 mt-2" src="/static/img/sliding.gif" width="30%">
+                            </div>
+
+                            <p>La fenêtre glissante est une zone carrée qui se déplace petit à petit sur toute l'image. A chaque fois, le classifcateur est appliqué sur la zone définie par la fenêtre, qui détecte si la région contient les caractéristiques Haar d'un visage.</p>
+
+                            <h4>2. Pyramide d'image et facteur d'échelle</h4>
 
                             <div class="text-center margintb">
                                 <img class="mb-2 mt-2" src="/static/img/pyramide.jpg" width="90%">
@@ -82,14 +91,6 @@
 
                             <p>Le classifacateur ayant été entraîné avec des visages de taille fixe, comment faire si notre image contient des visages de tailles différentes ? La solution est le <b>facteur d'échelle</b>. L'algorithme va redimensionner l'image en fonction de ce paramètre, et chercher des visages plus ou moins grands.</p>
             
-                            <h4>2. Fenêtre glissante</h4>
-
-                            <p>La fenêtre glissante est une zone carrée qui se déplace petit à petit sur toute l'image. A chaque fois, le classifcateur est appliqué sur la zone définie par la fenêtre, qui détecte si la région contient les caractéristiques Haar d'un visage. <b>facteur d'échelle</b></p>
-
-
-                            <div class="text-center margintb">
-                                <img class="mb-2 mt-2" src="/static/img/sliding.gif" width="30%">
-                            </div>
 
                             <p>Voici à quoi ressemble la fenêtre glissante combinée à la pyramide d'images. </p>
             
@@ -98,6 +99,10 @@
                             <p>Souvent, la majorité d'une image ne contient aucun visage. Rechercher toutes les caractéristiques Haar d'un visage sur une telle zone serait donc une perte de temps. C'est ici qu'intervient la <b>cascade</b>. Le classificateur fait intervenir plusieurs étapes, et les caractéristiques Haar sont régroupées en plusieurs étages.</p>
                             <p>A chaque fois le fenêtre se déplace, la comparaison entre l'image et les caractéristiques Haar se fait étape par étape. Si la fenêtre échoue à la première comparaison, le classifacateur considère qu'il n'y aucun visage dedans. Faire la comparaison avec les caractéristiques restantes est donc inutile et il peut passer à la fenêtre suivante.</p>
 
+                            <div class="text-center margintb">
+                                <img class="mb-2 mt-2" src="/static/img/cascade.jpg" width="90%">
+                            </div>
+
                             <h3>Paramètres</h3>
 
                             <h4>1. Taille minimum : minSize</h4>
@@ -105,23 +110,18 @@
                             <p>C'est la taille de la fenêtre [minSize x minSize]. La taille du visage à détecter doit donc être au moins aussi grande.</p>
 
                             <h4>2. Nombre minimum de voisins : minNeighbor</h4>
-
-                            C'est le nombre minimum de détection positives requises pour détecter un visages (pour 2 échelles différentes, un même visage est détecté 2 fois).
-
-                            <p></p>
+                            
+                            <p>C'est le nombre minimum de détection positives requises pour détecter un visages (pour 2 échelles différentes, un même visage est détecté 2 fois).</p>
             
                             <div class="line"></div>
             
-                            <h3 class="mt-5">Détection de visages et d'yeux</h3>
+                            <h3 class="mt-5">Détection du visage et des yeux</h3>
                             <div class="text-center margintb">
                                 <img class="img-rounded" src="{{ url_for('video_feed') }}" width="70%">
                             </div>
                             
             
                             <div class="line"></div>
-            
-                            <h2>Applications</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
             
                         </div>
                         <div class="col col-lg-1"></div>
